@@ -21,22 +21,23 @@ jobs:
     strategy:
       matrix:
         os:
-          - macos-14
           - macos-15
           - macos-15-intel
           - macos-26
+          - xcode-27
           - ubuntu-22.04
           - ubuntu-24.04
+          - ubuntu-26.04
     runs-on: ${{ matrix.os }}
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
         with:
           egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install fish shell
-        uses: fish-shop/install-fish-shell@c68df77e5817c01f6ca16d98f3860f551316a1ff # v2.1.26
+        uses: fish-shop/install-fish-shell@1ba366f90eef99b5a3e3a2e73e362d9248f39a3a # v2.1.33
       - name: Create fish shell file with valid indentation
         run: |
           echo "\
